@@ -96,7 +96,7 @@ class Order {
         $user_id          = $order->get_user_id(); // Get the costumer ID
         $learnpress_order = get_post_meta( $order_data, 'learnpress_order', true );
         
-        if( $learnpress_order === null ):
+        if( $learnpress_order === '' ):
 
             foreach ( $order->get_items() as $item_key => $item ):
 

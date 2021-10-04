@@ -114,9 +114,9 @@ class Course {
 			return;
 		}
 
-		if ( ! $user->can_purchase_course( $course->get_id() ) ) {
-			return;
-		}
+		// if ( ! $user->can_purchase_course( $course->get_id() ) ) {
+		// 	return;
+		// }
 
 		if ( $user->has_purchased_course( $course->get_id() ) && 'finished' !== $user->get_course_status( $course->get_id() ) ) {
 			return;
