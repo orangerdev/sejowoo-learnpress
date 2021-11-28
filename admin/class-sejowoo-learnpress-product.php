@@ -64,7 +64,7 @@ class Product {
     public function add_sejowoo_learnpress_product_data_tab( $original_tabs ) {
 
 		$new_tab['sejowoolearnpress'] = array(
-			'label'		=> __( 'Sejowoo LearnPress', 'sejowoo-learnpress' ),
+			'label'		=> __( 'LearnPress', 'sejowoo-learnpress' ),
 			'target'	=> 'sejowoolearnpress_options',
 			'class'		=> array( 'show_if_sejowoo_learnpress' ),
 			//'priority'	=> 55, // Not yet
@@ -75,7 +75,7 @@ class Product {
 		$tabs = array_slice( $original_tabs, 0, $insert_at_position, true ); // First part of original tabs
 		$tabs = array_merge( $tabs, $new_tab ); // Add new
 		$tabs = array_merge( $tabs, array_slice( $original_tabs, $insert_at_position, null, true ) ); // Glue the second part of original
-		
+
 		return $tabs;
 
 	}
@@ -91,27 +91,30 @@ class Product {
 ?>
 		<div id='sejowoolearnpress_options' class='panel woocommerce_options_panel'>
 			<div class='options_group'>
-<?php		
+<?php
 				$args = array(
 				    'post_type' => 'lp_course',
-				    'order'     => 'DESC'
-				);              
+				    'order'     => 'DESC',
+					'no_found_rows' => true,
+					'update_post_meta_cache' => false,
+					'update_post_term_cache' => false,
+				);
 
 				$options[''] = __( 'Select a Course', 'sejowoo-learnpress'); // default value
 				$value[]     = '';
 
 				$the_query = new \WP_Query( $args );
-				if($the_query->have_posts() ) : 
-				    while ( $the_query->have_posts() ) : 
-				       $the_query->the_post(); 
+				if($the_query->have_posts() ) :
+				    while ( $the_query->have_posts() ) :
+				       $the_query->the_post();
 				       $get_postName = get_the_title();
 				       $get_postID   = get_the_ID();
 				       $get_postLink = get_the_permalink();
 
 				       $options[$get_postID] = $get_postName;
 				       $value[$get_postID]   = $get_postID;
-				    endwhile; 
-				    wp_reset_postdata(); 
+				    endwhile;
+				    wp_reset_postdata();
 				endif;
 
 				woocommerce_wp_select( array(
