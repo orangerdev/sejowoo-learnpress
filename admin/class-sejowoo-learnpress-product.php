@@ -87,39 +87,45 @@ class Product {
 	 * @return 	void
 	 */
 	public function add_sejowoo_learnpress_product_data_fields() {
-		global $post;
 ?>
 		<div id='sejowoolearnpress_options' class='panel woocommerce_options_panel'>
 			<div class='options_group'>
 <?php
 				$args = array(
-				    'post_type' => 'lp_course',
-				    'order'     => 'DESC',
-					'no_found_rows' => true,
+				    'post_type' 			 => 'lp_course',
+				    'order'     			 => 'DESC',
+					'no_found_rows' 		 => true,
 					'update_post_meta_cache' => false,
 					'update_post_term_cache' => false,
 				);
 
 				$options[''] = __( 'Select a Course', 'sejowoo-learnpress'); // default value
-				$value[]     = '';
+				$value       = get_post_meta( get_the_ID(), '_select_course', true );
 
 				$the_query = new \WP_Query( $args );
+
 				if($the_query->have_posts() ) :
+
 				    while ( $the_query->have_posts() ) :
+
 				       $the_query->the_post();
+
 				       $get_postName = get_the_title();
 				       $get_postID   = get_the_ID();
 				       $get_postLink = get_the_permalink();
 
 				       $options[$get_postID] = $get_postName;
-				       $value[$get_postID]   = $get_postID;
+				       
 				    endwhile;
+
 				    wp_reset_postdata();
+
 				endif;
 
 				woocommerce_wp_select( array(
 			        'id'      	  => '_select_course',
 			        'label'   	  => __( 'LearnPress Course', 'sejowoo-learnpress' ),
+			        'selected' 	  => true,
 			        'desc_tip'	  => 'true',
 					'description' => __( 'Select LearnPress Course.', 'sejowoo-learnpress' ),
 			        'options' 	  => $options, //this is where I am having trouble

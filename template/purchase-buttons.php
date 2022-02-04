@@ -6,7 +6,7 @@
         $product = get_post( $product_id );
     ?>
         <li>
-            <a href='<?php echo home_url("/?add-to-cart=$product_id"); ?>'>
+            <a href='<?php echo home_url("/checkout/?add-to-cart=$product_id"); ?>'>
                 <?php echo __('Add to Cart', 'sejowoo-learnpress'); ?>
             </a>
         </li>
