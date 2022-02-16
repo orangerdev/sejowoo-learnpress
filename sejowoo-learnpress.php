@@ -16,7 +16,7 @@
  * Plugin Name:       Sejowoo LearnPress
  * Plugin URI:        https://sejoli.co.id
  * Description:       Integrates LearnPress, an courses plugin with Sejoli WooCommerce, a premium WordPress membership plugin.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Sejoli Team
  * Author URI:        https://sejoli.co.id
  * License:           GPL-2.0+
@@ -37,7 +37,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'SEJOWOO_LEARNPRESS_VERSION', '1.0.0' );
+define( 'SEJOWOO_LEARNPRESS_VERSION', '1.0.1' );
 define( 'SEJOWOO_LEARNPRESS_DIR', plugin_dir_path(__FILE__));
 define( 'SEJOWOO_LEARNPRESS_URL', plugin_dir_url(__FILE__));
 
