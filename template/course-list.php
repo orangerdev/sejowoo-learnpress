@@ -1,7 +1,6 @@
 <h2 class="ui header"><?php _e('Kelas', 'sejowoo-learnpress'); ?></h2>
 <?php
 $course_ids   = learn_press_get_all_courses();
-$user_courses = sejowoolp_get_user_purchased_courses();
 ?>
 <div class="course ui three column doubling stackable cards item-holder masonry grid"><?php
 foreach( (array) $course_ids as $course_id ) :
